@@ -17,6 +17,8 @@ namespace EmployeeManagement.Models
         public string Email { get; set; }
         [Required]
         public Dept? Deparment { get; set; }
+
+        //Just Adding comment to this property 
         public string StringPath { get; set; }
 
 
