@@ -32,6 +32,8 @@ namespace EmployeeManagement.Controllers
         }
 
         //This helps to ManageUserClaims, serves the UsersClaims page 
+
+        //Mange userClaims
         [HttpGet]
         //Appylying EditRolePolicy to this action
         [Authorize(Policy = "EditRolePolicy")]
