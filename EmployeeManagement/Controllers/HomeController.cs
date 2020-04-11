@@ -123,6 +123,7 @@ namespace EmployeeManagement.Controllers
                 return View(homeDetailsViewModel);
         }
 
+        //This serves the create Page
         [HttpGet]
         public ActionResult Create()
         {

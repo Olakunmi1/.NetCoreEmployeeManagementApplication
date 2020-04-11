@@ -32,6 +32,7 @@ namespace EmployeeManagement.Controllers
         } 
 
         //This action serves the Change password view 
+        //Serves the password html page
         [HttpGet]
         public IActionResult ChangePassword()
         {
