@@ -1,0 +1,63 @@
+﻿@model EmployeeCreateViewModel
+@{ 
+    ViewBag.Title = "Create New Employer";
+}
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10"> <input asp-for="Name" class="form-control" placeholder="Name" /></div>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10"> <input asp-for="Email" class="form-control" placeholder="Email" /></div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Deparment" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="Deparment" asp-items="Html.GetEnumSelectList<Dept>()" class="custom-select mr-sm-3">
+                <option value=" ">Please Select</option>
+            </select>
+        </div>
+        <span asp-validation-for="Deparment" class="text-danger"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Photos" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Photos" multiple class="form-control custom-file-input" />
+                <label class="custom-file-label"> Choose File...</label>
+            </div>
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <button class="btn btn-primary" type="submit">Create</button>
+    </div>
+
+    @*
+        The jQuery script below allows the file name(s) in the photo upload 
+        to be seen in the textbox...
+        Likewise displays multiple files selected
+    *@
+    @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileLabel = $(this).next('.custom-file-label');
+                var files = $(this)[0].files;
+                if (files.length > 1) {
+                    fileLabel.html(files.length + " " +  'files Selected');
+                }
+                else if (files.length == 1) { 
+                    fileLabel.html(files[0].name);
+                }
+
+            });
+        });
+    </script>
+    }
+</form>

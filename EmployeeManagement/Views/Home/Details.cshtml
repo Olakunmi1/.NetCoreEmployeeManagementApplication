@@ -1,0 +1,33 @@
+﻿@model HomeDetailsViewModel
+@{
+    ViewBag.Title = "Employee Details";
+    @*
+      The line of code below gets the name of the image and append to the rootfolder 
+        also a condition is attached "??" if the image is not set, use a known img file
+    *@
+    var PhotoPath = "~/images/" + (Model.Employee.StringPath ?? "img1.jpg");
+}
+
+<h3>@Model.PageTitle</h3>
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>
+                    @Model.Employee.Name
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body text-center">
+    <img class="imageThumbnail" width="100" height="150" src="@PhotoPath" asp-append-version="true" />
+    <h4>Employee ID: @Model.Employee.Id</h4>
+    <h4>Email: @Model.Employee.Email</h4>
+    <h4> Department: @Model.Employee.Deparment</h4>
+</div>
+<div class="card-footer text-center">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+    <a asp-controller="home" asp-action="edit" asp-route-id="@Model.Employee.Id" class="btn btn-primary"> Edit</a>
+    <a asp-controller="home" asp-action="delete" asp-route-id="@Model.Employee.Id" class="btn btn-danger m-1"> Delete</a>
+</div>
