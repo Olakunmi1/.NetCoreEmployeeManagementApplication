@@ -14,7 +14,7 @@ namespace EmployeeManagement.Models
         {
         }
 
-        //dbset of our model which creates the table in the DB
+       
         public DbSet<Employee> Employees { get; set; }
 
         /*
