@@ -1,5 +1,5 @@
 # .NetCoreEmployeeManagementApplication
 This Project Application covers what needs to be known in .netcoreMvc design pattern. And also the use of tag helpers and Authentication
-, Authorization. 
+, Authorization. Asyncronus programming is leveraged on all through 
 The Creattion of  USERS, ROLES and assigning users to Roles... 
 And  in additon CODEFIRST MIGRATION Desgin pattern was adopted...

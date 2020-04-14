@@ -21,8 +21,7 @@ namespace EmployeeManagement.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILogger<AdministrationController> logger;
 
-        // A constructor that injects the RoleManager Service
-        // A constructor that injects the UserManger Service and Ilogger Service..
+       
         public AdministrationController(RoleManager<IdentityRole> roleManager, 
                                         UserManager<ApplicationUser> userManager, ILogger<AdministrationController> logger)
         {
@@ -30,8 +29,6 @@ namespace EmployeeManagement.Controllers
             this.userManager = userManager;
             this.logger = logger;
         }
-
-        //This helps to ManageUserClaims, serves the UsersClaims page 
 
         //Mange userClaims
         [HttpGet]
@@ -117,7 +114,6 @@ namespace EmployeeManagement.Controllers
 
         //This helps to ManageRoles, serves the roles page
         [HttpGet]
-        //Appylying EditRole Policy to this action
         [Authorize(Policy = "EditRolePolicy")]
         public async Task <IActionResult> ManageUserRoles(string userId)
         {
@@ -153,7 +149,6 @@ namespace EmployeeManagement.Controllers
 
         //responds to post method for the roles action 
         [HttpPost]
-        //Appylying EditRole Policy to this action
         [Authorize(Policy = "EditRolePolicy")]
         public async Task<IActionResult>ManageUserRoles(List<UserRolesViewModel> model, string userId)
         {
@@ -189,7 +184,6 @@ namespace EmployeeManagement.Controllers
 
         }
 
-
         //List the users registered with the website
         public IActionResult ListUsers()
         {
@@ -211,6 +205,7 @@ namespace EmployeeManagement.Controllers
 
             // GetClaimsAsync retunrs the list of user Claims
             var userClaims = await userManager.GetClaimsAsync(user);
+
             // GetRolesAsync returns the list of user Roles
             var userRoles = await userManager.GetRolesAsync(user);
 
@@ -327,7 +322,6 @@ namespace EmployeeManagement.Controllers
 
         //This deletes Role present
         [HttpPost]
-        //Appylying DeleteRole Policy to EditRole action
         [Authorize(Policy = "DeleteRolePolicy")]
         public async Task<IActionResult> DeleteRole(string Id)
         {
@@ -438,6 +432,7 @@ namespace EmployeeManagement.Controllers
             return View(model);
 
         }
+
         [HttpGet]
         //this helps to assign roles to users 
         public async Task<IActionResult> EditUserInRole(string roleId)
